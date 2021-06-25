@@ -11,13 +11,15 @@ function $parse(source, parseOptions)
 {
     // Pull out options so they can be more easily mapped.
     const { sourceMap, filename, sourceRoot, pad } = parseOptions;
-
+    
+    let _pad;
+    
     // Parse SFC into a descriptor
     const descriptor = parse({
         source,
         filename,
         compiler,
-        compilerParseOptions: { pad: pad ?? 'line' },
+        compilerParseOptions: { pad: (_pad = pad) !== null && _pad !== void 0 ? _pad : 'line' },
         sourceRoot,
         needMap: sourceMap
     });
